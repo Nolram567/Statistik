@@ -17,9 +17,9 @@ if __name__ == "__main__":
 
     '''
     Wir werden mit steigendem n (wobei n die Zahl der Iterationen ist) nur schleppend genauer. Für jede korrekte
-     (oder annährend korrekte), neue Nachkommastelle müssen wir unser Ergebnis mit 10 multiplizieren. Allerdings liegen 
-     viele Stichproben mit hohem n auch einfach daneben nach der zweiten Nachkommastelle.
-    Die Komplexität steigt exponentiell.
+     (oder annährend korrekte), neue Nachkommastelle müssen wir unser n mit 10 multiplizieren. Allerdings liegen 
+     viele Stichproben mit hohem n auch tendenziell häufiger daneben nach der zweiten Nachkommastelle.
+    Die Komplexität steigt also exponentiell.
     
     pi = 3.14159
     10.000: 3.17
