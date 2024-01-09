@@ -12,7 +12,9 @@ hist(data$B1T)
 
 # Wir quantifizieren diese Einschätzung mit dem Kolmogorov Smirnov Test.
 # Wir nehmen ein Konfidenzlimit von 95% an. Demenstsprechend ist unser Signifikanzlevel α 0.05, da das Konfidenzlimit als 1-α definiert ist.
-# Unsere H1 ist, dass die Daten nicht normalverteilt sind. H0 ist, dass die Daten normalverteilit sind.
+# H0: Die Daten sind normalverteilt. 
+# H1: Die Daten sind nicht normalverteilt
+ 
 ks.test(data$B0T, "pnorm", mean(data$B0T), sd(data$B0T))
 
 #	Asymptotic one-sample Kolmogorov-Smirnov test
@@ -43,8 +45,9 @@ t.test(data$B0T, data$B1T, alternative = "two.sided", conf.level = 0.95)
 #  mean of x mean of y 
 #1.127797  1.008232 
 #H0 wird akzeptiert, da p > α
-# Dem Ergebnis ist nicht zu trauen, da unsere Datensätze nicht normalverteilt sind, wie wir in 1 b) festgestellt haben. Bei großen 
-#Stichproben können auch nicht normalverteilte Daten toleriert werden, unsere dof liegen jedoch nur bei 382
+# Dem Ergebnis ist nicht zu trauen, da unsere Datensätze nicht normalverteilt sind, wie wir in 1 b) festgestellt haben.
+# Und der t-test i. d. R. nur bei normalverteilten Daten verwendet werden sollte.
+# Außerdem haben wir unsere Daten nicht auch Varianzhomgenität getestet.
 
 #Aufgabe 2
 # α = 0.05
@@ -78,7 +81,25 @@ ks.test(B, "pnorm", mean(B), sd(B))
 #  H0 wird akzeptiert, da p>α
 
 #  Daraus schlussfolgern wir, dass wir eine statistische signifikante Grundlage haben, um anzunehmen, dass A und B normalverteilt sind.
-# Wir führen einen Welch Two Sample t-test durch, daher müssen wir die Geleichheit der Varianzen nicht überprüfen.
+# Wir führen zudem einen F-Test auf Varianzhomogenität durch.
+# H0: Die Varianzen sind gleich
+# H1: Die Varianzen sind ungleich.
+
+var.test(A, B)
+
+#F test to compare two variances
+#data:  A and B
+#F = 0.90201, num df = 99, denom df = 99, p-value = 0.6089
+#alternative hypothesis: true ratio of variances is not equal to 1
+#95 percent confidence interval:
+#  0.606912 1.340602
+#sample estimates:
+#  ratio of variances 
+#0.9020131 
+# H0 wird akzeptiert, da p>α
+# Auf dieser Grundlage können wir nun den t-test durchführen
+# H0: Die Mittelwerte der Stichproben weichen nicht voneinander ab.
+# H1: Die Mittelwerte der Stichproben weichen voneinander ab.
 
 t.test(A, B, alternative = "two.sided", conf.level = 0.95)
 
@@ -112,6 +133,7 @@ t.test(A, C, alternative = "two.sided", conf.level = 0.95)
 # valider als der Vergleich von A und C, weil C beispielsweise demografisch anders strukturiert sein könnte als A. Diese Störfaktoren
 # müssten ggf. kontrolliert werden. A und B hingegen besitzen dieselben demografischen Eigenschaften (ob diese repräsentativ sind, ist eine
 # andere Frage).
+
 attach(data)
 
 for (i in 1:12) {
@@ -126,8 +148,6 @@ for (i in 1:12) {
     else{
       cat("H0 wird akzeptiert für", i, "\n")
     }
-  } else {
-    cat("Nicht genügend Daten für Sternzeichen", i, "\n")
   }
 }
 
