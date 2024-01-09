@@ -134,13 +134,20 @@ t.test(A, C, alternative = "two.sided", conf.level = 0.95)
 # müssten ggf. kontrolliert werden. A und B hingegen besitzen dieselben demografischen Eigenschaften (ob diese repräsentativ sind, ist eine
 # andere Frage).
 
+
+#Aufgabe 2 c)
+# Wir testen innerhalb der Sternzeichen, d. h. wir extrahieren die Werte von Sternzeichen x
+# der Kontrollgruppe und vergleichen sie mit den Werten von Sternzeichen x der Experimentalgruppe.
+# H0: Die Mittelwerte der Stichproben weichen nicht voneinander ab.
+# H1: Die Mittelwerte der Stichproben weichen voneinander ab.
+
 attach(data)
 
 for (i in 1:12) {
-  subset_data <- GB[Sternzeichen == i]
+  subset_data <- GA[Sternzeichen == i]
   
   if (length(subset_data) > 1) {  
-    result <- t.test(GA[Sternzeichen == i], subset_data)
+    result <- t.test(GB[Sternzeichen == i], subset_data)
     
     if (result$p.value < 0.05) {
       cat("H0 wird verworfen für", i, "\n")
@@ -152,10 +159,10 @@ for (i in 1:12) {
 }
 
 # H0 wird nur für Sternzeichen 9 akzeptiert. Das heißt es gibt nur für dieses Sternzeichen eine signifikante Abweichung vom Mittelwert
-# der Kontrollgruppe. Als Marketer würde ich empfehlen, dass Produkt nicht speziell ab Jungfrauen zu vermarkten, da ansonsten vielleicht
+# der Kontrollgruppe. Als Marketer würde ich empfehlen, dass Produkt nicht speziell an Jungfrauen zu vermarkten, da ansonsten vielleicht
 # alle anderen Sternezeichen ein anderes Produkt wählen. Als Wissenschaftler würde ich sagen, dass Korrelation nicht Kausalität impliziert.
-# Und die Korrelation auf ein nicht aufgeführtes drittes Merkmal zurückführbarsein könnte oder der Effekt aufgrund der kleinen Stichprobengröße
-# "zufällig entstanden ist.
+# Und die Abweichung auf ein nicht aufgeführtes drittes Merkmal zurückführbar sein könnte oder der Effekt aufgrund der kleinen Stichprobengröße
+# zufällig entstanden ist.
 
 #Aufgabe 3 a)
 
@@ -168,6 +175,9 @@ t_krit_upper <- qt(1-alpha/2, dof)
 
 #b)
 
+# H0: Der Median der Daten ist gleich 100
+# H1: Der Median der Daten weicht signifikant von 100 ab.
+
 wilcox.test(c(92, 96, 96, 106, 112, 114, 114, 118, 123, 124), mu = 100)
 
 #Wilcoxon signed rank test with continuity correction
@@ -176,6 +186,9 @@ wilcox.test(c(92, 96, 96, 106, 112, 114, 114, 118, 123, 124), mu = 100)
 #alternative hypothesis: true location is not equal to 100
 
 # H0 wird verworfen, p < α
+
+
+#Aufgabe 4 b)
 
 größe <- c(185, 189, 196, 172, 175, 165, 199, 168, 191, 180)
 gewicht <- c(75, 81, 85, 66, 68, 62, 89, 63, 80, 72)
@@ -187,7 +200,7 @@ cor(größe, gewicht)
 
 # Wir führen einen Pearson-Korrelationstest durch.
 # H0: Die wahre Korrelation zwischen Größe und Gewicht ist 0.
-# H1 : Die wahre Korrelatin zwischen Größe und Gewicht ist nicht 0.
+# H1 : Die wahre Korrelation zwischen Größe und Gewicht ist nicht 0.
 
 cor.test(größe, gewicht)
 
@@ -202,4 +215,6 @@ cor.test(größe, gewicht)
 # 0.9936803
 # H0 wird verworfen, da p<α
 
-plot(größe, gewicht, main="Scatterplot von Größe und Gewicht", xlab="Gewicht",  ylab="Größe", pch=19, col="blue")
+#Aufgabe 4 c)
+
+plot(größe, gewicht, main="Scatterplot von Größe und Gewicht", xlab="Gewicht",  ylab="Größe")
