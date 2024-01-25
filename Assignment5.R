@@ -76,7 +76,7 @@ hist(bd$Blutdruck, xlab = "Blutdruck")
 # H0 : Der mittlere Blutdruck weicht nach der Gabe des Medikaments nicht signifikant von Mittelwert 17 ab.
 # H1 : Der mittlere Blutdruck ist nach der Gabe des Medikaments signifikant kleiner oder größer als 17.
 
-t.test(bd$Blutdruck, alternative = c("two.sided", "less", "greater"), mu = 17, conf.level = 0.99)
+t.test(bd$Blutdruck, alternative = "two.sided", mu = 17, conf.level = 0.99)
 
 #data:  bd$Blutdruck
 #t = -2.2247, df = 99, p-value = 0.02837
@@ -90,7 +90,7 @@ t.test(bd$Blutdruck, alternative = c("two.sided", "less", "greater"), mu = 17, c
 
 
 # Zweiseitiger t-test: Signifikanzlevel α = 0.01; Konfidenzintervall = 1-α;Angenommener Mittelwert μ = 17
-t.test(bd$Blutdruck, alternative = c("two.sided", "less", "greater"), mu = 17, conf.level = 0.99)
+t.test(bd$Blutdruck, alternative = "two.sided", mu = 17, conf.level = 0.99)
 
 # data:  bd$Blutdruck
 # t = -2.2247, df = 99, p-value = 0.02837
@@ -106,7 +106,7 @@ t.test(bd$Blutdruck, alternative = c("two.sided", "less", "greater"), mu = 17, c
 # Einseitiger t-test: Signifikanzlevel α = 0.05; Konfidenzintervall = 1-α;Angenommener Mittelwert μ = 17
 # H0: Der mittlere Blutdruck weicht nach der Gabe des Medikaments nicht kleiner als 17.
 # H1 : Der mittlere Blutdruck ist nach der Gabe des Medikaments signifikant kleiner als 17
-t.test(bd$Blutdruck, alternative = c("less"), mu = 17, conf.level = 0.95)
+t.test(bd$Blutdruck, alternative = "less", mu = 17, conf.level = 0.95)
 
 #data:  bd$Blutdruck
 #t = -2.2247, df = 99, p-value = 0.01419
@@ -121,7 +121,7 @@ t.test(bd$Blutdruck, alternative = c("less"), mu = 17, conf.level = 0.95)
 # Einseitiger t-test: Signifikanzlevel α = 0.05; Konfidenzintervall = 1-α;Angenommener Mittelwert μ = 17
 # H0: Der mittlere Blutdruck weicht nach der Gabe des Medikaments nicht größer als 17.
 # H1 : Der mittlere Blutdruck ist nach der Gabe des Medikaments signifikant größer als 17
-t.test(bd$Blutdruck, alternative = c("greater"), mu = 17, conf.level = 0.95)
+t.test(bd$Blutdruck, alternative = "greater", mu = 17, conf.level = 0.95)
 
 #data:  bd$Blutdruck
 #t = -2.2247, df = 99, p-value = 0.9858
@@ -153,7 +153,7 @@ mean_B <- mean(B)
 # Zweiseitiger t-test: Signifikanzlevel α = 0.05; Konfidenzintervall = 1-α; Angenommener Mittelwert μ = mean(A)
 # H0 : Die Mittelwerte von A und B sind gleich
 # H1 : Die Mittelwerte von A und B sind nicht gleich
-t.test(A, B, alternative = c("two.sided"), mu = mean_A, conf.level = 0.95)
+t.test(A, B, alternative = "two.sided", mu = mean_A, conf.level = 0.95)
 
 #data:  A and B
 #t = -2.9478, df = 163.62, p-value = 0.003669
