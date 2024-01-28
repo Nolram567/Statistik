@@ -33,6 +33,7 @@ plot(Time,Counts, ylab = "Counts per second")
 
 curve(f3, add=T)
 
+# R^2 = 0.8319
 # linear_model$R^2 < exponential_model$R^2 < quadratic_model$R^2
 
 # Bonusaufgabe
