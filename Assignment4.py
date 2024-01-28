@@ -10,6 +10,6 @@ if __name__ == "__main__":
         if sum(height_list)/100 < 178:
             c += 1
 
-    print(f"Realtive Häufigkeit: {c/1000}; Die Wahrscheinlichkeit berechnet mit dem Z-wert und der PHI-tabelle liegt bei 42%.")
+    print(f"Realtive Häufigkeit: {c/1000}; Die Wahrscheinlichkeit (, dass der Mittelwert einer Stichprobe kleiner als 178 ist,) berechnet mit einer z-Transformation und der PHI-tabelle liegt bei 42%.")
 
 
